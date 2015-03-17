@@ -1,11 +1,6 @@
-// Let's register Template7 helper so we can pass json string in links
-Template7.registerHelper('json_stringify', function (context) {
-    return JSON.stringify(context);
-});
-
-// Export selectors engine
-var $$ = Dom7;
-var mainView ;
+// helpers for web-app
+// not in main file now (my-app.js)
+// 2015-03-17
 
 /* two helpers "if_filled_object" & "joinindex" used in post.html
     <li>{{#if_filled_object categories}}<b>Categories: </b>{{joinindex categories delimeter=" | " indexname="title"}}{{else}}<em>Uncategorized yet...</em>{{/if_filled_object}}</li>
@@ -49,68 +44,3 @@ Template7.registerHelper('if_filled_object', function (condition, options) {
     return options.inverse(this, options.data);
   }
 });
-
-
-
-// Initialize your app
-var myApp = new Framework7({
-  animateNavBackIcon: true,
-// Enable templates auto precompilation
-  precompileTemplates: true,
-// Enabled pages rendering using Template7
-  template7Pages: true,
-  template7Data: {
-
-        about: {
-                name: 'Michel',
-                age: 62,
-                position: 'Data Designer',
-                company: 'xiligroup v 0.3',
-                interests: ['garden', 'music', 'JavaScript', 'iMac', 'iOS apps', 'walk on snow']
-              },
-        'page:contacts': {
-              email: 'contact@xiligroup.com',
-              city: 'Lyon',
-               country: 'Europe'
-           }
-      }
-});
-var counter = document.getElementById('counter').innerHTML;
-function get_latest_posts() {
-  $$.getJSON ('http://michel-i5-imac.local:8888/wp_svn42/json/get_posts/',  function (json) {
-
-      Template7.data.posts = json['posts'];
-      Template7.data.counter = { count: json['count'], total_count: json['count_total'] };
-
-
-      // compile it with Template7
-
-      // Add main View
-      mainView = myApp.addView('.view-main', {
-          // Enable dynamic Navbar
-          dynamicNavbar: true,
-          domCache: true
-      });
-
-      var compiledTemplate = Template7.compile(counter);
-      document.getElementById('posts_count').innerHTML = compiledTemplate(Template7.data.counter);
-  });
-};
-get_latest_posts();
-
-// Select Pull to refresh content
-var ptrContent = $$('.pull-to-refresh-content');
-
-// On refresh
-ptrContent.on('refresh', function (e) {
-  // Emulate 1s loading
-  setTimeout(function () {
-  //console.log('refreshing');
-    // Execute get_latest_posts to get new Posts
-    get_latest_posts();
-
-  myApp.pullToRefreshDone();
-  }, 100);
-});
-
-

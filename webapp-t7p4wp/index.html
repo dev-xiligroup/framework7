@@ -51,7 +51,7 @@
         <!-- Top Navbar-->
         <div class="navbar">
           <div class="navbar-inner">
-            <div class="center sliding">Template7 Pages testing latest Posts 5</div>
+            <div class="center sliding">Template7 Pages testing latest Posts 0317-22:50</div>
             <div class="right"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
           </div>
         </div>
@@ -68,7 +68,7 @@
               <div class="content-block-title">Bienvenue sur cette application test 1</div>
               <div class="content-block">
                 <div class="content-block-inner">
-                  <p>This app illustrates how you can use built-in template engine Template7 to render pages with required data coming from a WordPress website.</p>
+                  <p>This app illustrates how you can use built-in template engine Template7 to render pages with required data coming from a WordPress website. If after (count) of latest posts, a char * is visible, datas come from localStorage: pull to refresh content above !</p>
                 </div>
               </div>
               <div class="list-block">
@@ -78,12 +78,10 @@
                       <div class="item-inner"> 
                         <div class="item-title">About Me</div>
                       </div></a></li>
-<script id="counter" type="text/template7">
-                    <em> ({{count}})</em>
-                </script>
+
                   <li><a href="posts.html" data-context-name="posts" class="item-link item-content">
                       <div class="item-inner">
-                        <div class="item-title" >Latest Posts <span data-page="counter" id="posts_count"></span></div>
+                        <div class="item-title" >Latest Posts <span data-context-name="counter" data-page="counter" id="posts_count"></span></div>
                       </div></a></li>
                   <li><a href="contacts.html" class="item-link item-content">
                       <div class="item-inner">
@@ -108,6 +106,9 @@
       </div>
     </div>
     <!-- Template7 templates-->
+    <script id="counter" type="text/template7">
+        <em> ({{count}}){{saved}}</em>
+    </script>
     <script type="text/template7" id="about">
       <div class="navbar">
         <div class="navbar-inner">
@@ -129,8 +130,13 @@
         </div>
       </div>
     </script>
+    <!-- template7 templates -->
+
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/framework7.debug.js"></script>
+    <!-- Path to template7 helpers js-->
+    <script type="text/javascript" src="js/template7-helpers.js"></script>
     <!-- Path to your app js-->
     <script type="text/javascript" src="js/my-app.js"></script>
 
