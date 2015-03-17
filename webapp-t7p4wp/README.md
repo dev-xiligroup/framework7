@@ -20,8 +20,8 @@ Tested also with an iPad Air retina (via browser or as webapp installed in iPad 
 
 ### installation
 
-install the folder in a (local) server
-modify the URI of the WP website to keep json
+- install the folder in a (local) server
+- modify the URI of the WP website to keep json (verify that the apache server is ready to deliver json for IP client - .htaccess)
 
 ### Pending issues
 
