@@ -23,11 +23,18 @@ Tested also with an iPad Air retina (via browser or as webapp installed in iPad 
 - install the folder in a (local) server
 - modify the URI of the WP website to keep json (verify that the apache server is ready to deliver json for IP client - .htaccess)
 
+### Done
+
+- form to choose URI of WP server
+- caching of Json Datas
+- insertion of thumbnail_images if available
+
 ### Pending issues
 
-- refreshing
-- caching
-- ...
+X refreshing excepted:'? with post.html ever in cache if home iOs webApp'
+X caching
+- full off line
+- doc
 
 ### Projects
 
@@ -36,4 +43,4 @@ Tested also with an iPad Air retina (via browser or as webapp installed in iPad 
 
 - french speaking references tips and tricks website
 
-michelwppi dev.xiligroup 2015-03-17
+michelwppi dev.xiligroup 2015-03-18
