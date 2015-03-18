@@ -31,8 +31,8 @@ Tested also with an iPad Air retina (via browser or as webapp installed in iPad 
 
 ### Pending issues
 
-X refreshing excepted:'? with post.html ever in cache if home iOs webApp'
-X caching
+- X refreshing excepted:'? with post.html ever in cache if home iOs webApp'
+- X caching
 - full off line
 - doc
 
