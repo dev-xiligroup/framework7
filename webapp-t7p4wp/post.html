@@ -2,7 +2,7 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
-    <div class="center sliding">{{title}}v 2</div>
+    <div class="center sliding">{{title}}v 3</div>
     <div class="right"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
   </div>
 </div>
@@ -12,10 +12,11 @@
       <div class="content-block">
         <div class="content-block-inner">
           <h3>{{title}}</h3>
+          <p>{{#if thumbnail_images}}<img class="lazy" width="{{thumbnail_images['medium']['width']}}" height="{{thumbnail_images['medium']['height']}}" data-src="{{thumbnail_images['medium']['url']}}"/>{{/if}}</p>
           <p>{{content}}</p>
           <ul>
-            <li><b>Date</b> - {{modified}}</li>
-            <li><b>Author</b> - {{author['name']}}</li>
+            <li><b>Date: </b> - {{modified}}</li>
+            <li><b>Author: </b> - {{author['name']}}</li>
             <li>{{#if_filled_object categories}}<b>Categories: </b>{{joinindex categories delimeter=" | " indexname="title"}}{{else}}<em>Uncategorized yet...</em>{{/if_filled_object}}</li>
 
           </ul>

@@ -51,7 +51,7 @@
         <!-- Top Navbar-->
         <div class="navbar">
           <div class="navbar-inner">
-            <div class="center sliding">Template7 Pages testing latest Posts 0317-22:50</div>
+            <div class="center sliding">Template7 Pages testing latest Posts 0318-13:18</div>
             <div class="right"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
           </div>
         </div>
@@ -87,6 +87,10 @@
                       <div class="item-inner">
                         <div class="item-title">Contacts</div>
                       </div></a></li>
+                  <li><a href="#" data-context-name="uri" class="link icon-only open-popup item-link item-content">
+                      <div class="item-inner">
+                        <div class="item-title">Settings</div>
+                      </div></a></li>
                 </ul>
               </div>
               <div class="content-block-title">Side panels</div>
@@ -98,13 +102,52 @@
               </div>
             </div>
           </div>
+
+
         </div>
+
         <!-- Bottom Toolbar-->
         <div class="toolbar">
           <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
         </div>
+
       </div>
     </div>
+
+       <!-- Popup to add new task           -->
+        <div class="popup">
+          <div class="view view-popup navbar-fixed">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"></div>
+                <div class="center sliding">Edit URI</div>
+                <div class="right"><a href="#" class="link close-popup">Cancel</a></div>
+              </div>
+            </div>
+            <div class="pages">
+              <div data-page="URI" class="page">
+                <div class="page-content">
+                  <div class="list-block">
+                    <ul>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-uri label">URI (remote WP website)</div>
+                            <div class="item-input">
+                              <input type="url" name="uri" placeholder="URI">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="content-block"><a class="button edit-uri">Edit</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
     <!-- Template7 templates-->
     <script id="counter" type="text/template7">
         <em> ({{count}}){{saved}}</em>
