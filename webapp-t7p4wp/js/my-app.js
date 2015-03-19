@@ -17,7 +17,10 @@ var myApp = new Framework7({
 // Enabled pages rendering using Template7
   template7Pages: true,
   template7Data: {
-
+        ncounter : {
+          count: 10,
+          total:100
+              },
         about: {
                 name: 'Michel',
                 age: 62,
@@ -32,22 +35,28 @@ var myApp = new Framework7({
            }
       }
 });
-// Add main View
-mainView = myApp.addView('.view-main', {
-    // Enable dynamic Navbar
-    dynamicNavbar: true,
-    domCache: true
-});
 
-var counter = document.getElementById('counter').innerHTML; // keep script
+
+/*
+$$(document).on('pageInit', function (e) { // fired when changing page
+    var page = e.detail.page;
+    // Code for About page
+    if (page.name ) {
+      myApp.alert('Here comes our index! ' + page.view );
+    }
+  });
+*/
+//var template_counter = document.getElementById('templateCounter').innerHTML; // keep counter script
 
 var t7p4wpDataCount = localStorage.t7p4wpDataCount ? JSON.parse(localStorage.t7p4wpDataCount) : [0,0];
+
+var uri = localStorage.t7p4wpDataURI ? localStorage.t7p4wpDataURI : 'http://michel-i5-imac.local:8888/wp_svn42/json/get_posts/';
 
 function get_latest_posts() {
   //$$.getJSON('http://michel-i6-imac.local:8888/wp_svn42/json/get_posts/' , function (json, status, xhr) {
   // to manage errors (? better)
     $$.ajax ({
-      url: 'http://michel-i5-imac.local:8888/wp_svn42/json/get_posts/',
+      url: uri,
       dataType: 'json',
       timeout:2500,
       success: function(json, status, xhr) {
@@ -61,8 +70,11 @@ function get_latest_posts() {
 
           Template7.data.counter = { count: json['count'], total_count: json['count_total'] };
 
-          var compiledTemplate = Template7.compile(counter);
-          $$('#posts_count').html(compiledTemplate(Template7.data.counter)); // not set in Safari of iPad but ok in WebApp (HTML5 iOS home screen)
+          //var compiledTemplate = Template7.compile(template_counter);
+
+          //$$('#posts_count').html(compiledTemplate(Template7.data.counter)); // not set in Safari of iPad but ok in WebApp (HTML5 iOS home screen)
+
+          $$('#posts_count').html(Template7.templates.templateCounter(Template7.data.counter)); // automatically detected because precompile
           Template7.data.counter['saved'] = '*'; // to indicate local storage
           localStorage.t7p4wpDataCount = JSON.stringify(Template7.data.counter);
 
@@ -87,9 +99,42 @@ if ( typeof (localStorage.t7p4wpData)  == 'undefined' || localStorage.t7p4wpData
 } else {
     Template7.data.posts = JSON.parse (localStorage.t7p4wpData); // as in todo7 example
     Template7.data.counter = t7p4wpDataCount;
-    var compiledTemplate = Template7.compile(counter);
-    document.getElementById('posts_count').innerHTML = compiledTemplate(Template7.data.counter); // not set in Safari of iPad but ok in WebApp (HTML5 iOS home screen)
+    //var compiledTemplate = Template7.compile(template_counter);
+    //document.getElementById('posts_count').innerHTML = compiledTemplate(Template7.data.counter); // not set in Safari of iPad but ok in WebApp (HTML5 iOS home screen)
+     $$('#posts_count').html(Template7.templates.templateCounter(Template7.data.counter));
 }
+
+// Add main View
+mainView = myApp.addView('.view-main', {
+    // Enable dynamic Navbar
+    dynamicNavbar: true,
+    domCache: true
+});
+
+
+$$('.popup').on('open', function () { // as in todo7 example
+    $$('body').addClass('with-popup');
+});
+$$('.popup').on('opened', function () {
+    $$(this).find('input[name="uri"]').focus();
+    $$(this).find('input[name="uri"]').val(uri);
+
+});
+$$('.popup').on('close', function () {
+    $$('body').removeClass('with-popup');
+    $$(this).find('input[name="uri"]').blur().val('');
+});
+
+// Add URI
+$$('.popup .edit-uri').on('click', function () {
+    var uri = $$('.popup input[name="uri"]').val().trim();
+    if (uri.length === 0) {
+        return;
+    }
+    Template7.data.uri = uri;
+    localStorage.t7p4wpDataURI = Template7.data.uri;
+    myApp.closeModal('.popup');
+});
 
 // Select Pull to refresh content
 var ptrContent = $$('.pull-to-refresh-content');

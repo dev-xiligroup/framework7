@@ -47,17 +47,18 @@
     <!-- Views-->
     <div class="views">
       <!-- Your main view, should have "view-main" class-->
-      <div class="view view-main">
+      <div class="view view-main" data-url="index.html">
         <!-- Top Navbar-->
         <div class="navbar">
           <div class="navbar-inner">
-            <div class="center sliding">Template7 Pages testing latest Posts 0318-13:18</div>
+            <div class="center sliding">Template7 Pages testing latest Posts 0319-17:50</div>
             <div class="right"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
           </div>
         </div>
-        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional data-template="ncounter" data-context-name="ncounter" appropriate classes-->
         <div class="pages navbar-through toolbar-through">
           <!-- Index Page-->
+
           <div data-page="index" class="page">
             <div class="page-content pull-to-refresh-content">
               <!-- Pull to Refresh -->
@@ -75,13 +76,13 @@
 
                 <ul>
                   <li><a href="#" data-template="about" data-context-name="about" class="item-link item-content">
-                      <div class="item-inner"> 
+                      <div class="item-inner">
                         <div class="item-title">About Me</div>
                       </div></a></li>
 
-                  <li><a href="posts.html" data-context-name="posts" class="item-link item-content">
+                  <li><a href="posts.html?deversion=0319" data-context-name="posts" class="item-link item-content">
                       <div class="item-inner">
-                        <div class="item-title" >Latest Posts <span data-context-name="counter" data-page="counter" id="posts_count"></span></div>
+                        <div class="item-title" >Latest Posts <span id="posts_count"></span></div>
                       </div></a></li>
                   <li><a href="contacts.html" class="item-link item-content">
                       <div class="item-inner">
@@ -112,7 +113,9 @@
         </div>
 
       </div>
+
     </div>
+
 
        <!-- Popup to add new task           -->
         <div class="popup">
@@ -149,8 +152,11 @@
         </div>
 
     <!-- Template7 templates-->
-    <script id="counter" type="text/template7">
+    <script id="templateCounter" type="text/template7">
         <em> ({{count}}){{saved}}</em>
+    </script>
+    <script id="ncounter" type="text/template7">
+        <em> ({{count}}) </em>
     </script>
     <script type="text/template7" id="about">
       <div class="navbar">
