@@ -17,9 +17,9 @@
           <ul>
             <li><b>Date: </b>{{modified}}</li>
             <li><b>Author: </b>{{author['name']}}</li>
-            <li>{{#if_filled_object categories}}<b>Categories: </b>{{joinindex categories delimeter=" | " indexname="title"}}{{else}}<em>Uncategorized yet...</em>{{/if_filled_object}}</li>
-            <li>{{#if_filled_object tags}}<b>Tags: </b>{{joinindex tags delimeter=" | " indexname="title"}}{{else}}<em>No tag yet...</em>{{/if_filled_object}}</li>
-            <li>{{#if_filled_object taxonomy_language}}<b>Language: </b>{{joinindex taxonomy_language delimeter=" | " indexname="description"}}{{else}}<em>Undefined...</em>{{/if_filled_object}}</li>
+            <li>{{#if_filled_object terms.category}}<b>Categories: </b>{{joinindex terms.category delimeter=" | " indexname="name"}}{{else}}<em>Uncategorized yet...</em>{{/if_filled_object}}</li>
+            <li>{{#if_filled_object terms.post_tag}}<b>Tags: </b>{{joinindex terms.post_tag delimeter=" | " indexname="name"}}{{else}}<em>No tag yet...</em>{{/if_filled_object}}</li>
+            <li>{{#if_filled_object terms.language}}<b>Language: </b>{{joinindex terms.language delimeter=" | " indexname="description"}}{{else}}<em>Undefined...</em>{{/if_filled_object}}</li>
             {{linkstopostinotherlang custom_fields link_title="This post in"}}
           </ul>
         </div>

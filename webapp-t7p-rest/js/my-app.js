@@ -6,7 +6,7 @@ Template7.registerHelper('json_stringify', function (context) {
 // Export selectors engine
 var $$ = Dom7;
 var mainView ;
-
+var json_type = 'rest'; // global
 
 // Initialize your app
 var myApp = new Framework7({
@@ -49,8 +49,13 @@ $$(document).on('pageInit', function (e) { // fired when changing page
 //var template_counter = document.getElementById('templateCounter').innerHTML; // keep counter script
 
 var t7p4wpDataCount = localStorage.t7p4wpDataCount ? JSON.parse(localStorage.t7p4wpDataCount) : [0,0];
+if (json_type == 'rest') {
+  var uri = localStorage.t7p4wpDataURI ? localStorage.t7p4wpDataURI : 'http://michel-i5-imac.local:8888/wp_svn41/wp-json/posts/';
+} else {
+  var uri = localStorage.t7p4wpDataURI ? localStorage.t7p4wpDataURI : 'http://michel-i5-imac.local:8888/wp_svn42/json/get_posts/';
+}
 
-var uri = localStorage.t7p4wpDataURI ? localStorage.t7p4wpDataURI : 'http://michel-i5-imac.local:8888/wp_svn42/json/get_posts/';
+
 
 function get_latest_posts() {
   //$$.getJSON('http://michel-i6-imac.local:8888/wp_svn42/json/get_posts/' , function (json, status, xhr) {
@@ -58,21 +63,30 @@ function get_latest_posts() {
     $$.ajax ({
       url: uri,
       dataType: 'json',
-      timeout:2500,
+      timeout:4500,
       success: function(json, status, xhr) {
 
         console.log('inside ' + status);
 
         if( status == 200 ) {
-          Template7.data.posts = json['posts'];
+
+          if (json_type == 'rest') {
+            Template7.data.posts = json; // WP REST API 'http://michel-i5-imac.local:8888/wp_svn41/wp-json/posts/'
+          } else {
+            Template7.data.posts = json['posts'];
+          }
+
           var index = -1;
           var ar_ID_to_index = {};
-          var ar_ID = the_posts.map(function(a){index++; var nid = a['id']; ar_ID_to_index[nid] = index; });
+          var ar_ID = the_posts.map(function(a){index++; var nid = a['ID']; ar_ID_to_index[nid] = index; });
           Template7.data.ID_to_index = ar_ID_to_index;
 
           localStorage.t7p4wpData = JSON.stringify(Template7.data.posts); // as in todo7 example
-
-          Template7.data.counter = { count: json['count'], total_count: json['count_total'] };
+          if (json_type == 'rest') {
+            Template7.data.counter = { count: json.length, total_count: json.length }; // WP REST API
+          } else {
+            Template7.data.counter = { count: json['count'], total_count: json['count_total'] }; // JSON API
+          }
 
           //var compiledTemplate = Template7.compile(template_counter);
 
@@ -105,7 +119,7 @@ if ( typeof (localStorage.t7p4wpData)  == 'undefined' || localStorage.t7p4wpData
     var the_posts = Template7.data.posts;
     var index = -1;
     var ar_ID_to_index = {};
-    var ar_ID = the_posts.map(function(a){index++; var nid = a['id']; ar_ID_to_index[nid] = index; });
+    var ar_ID = the_posts.map(function(a){index++; var nid = a['ID']; ar_ID_to_index[nid] = index; });
     Template7.data.ID_to_index = ar_ID_to_index;
     Template7.data.counter = t7p4wpDataCount;
     //var compiledTemplate = Template7.compile(template_counter);

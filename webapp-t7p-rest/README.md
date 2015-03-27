@@ -1,7 +1,7 @@
 # framework7
 examples and tests with framework7 (from idangero.us) and WordPress
 
-## 1 - Template7 Pages for WordPress
+## 2 - Template7 Pages for WordPress and JSON REST API
 
 This example is the result of tests to learn famous Framework7 with WordPress.
 This is based on examples available in http://www.idangero.us/framework7/examples/
@@ -9,12 +9,13 @@ This example is published to open discussion and improvements...
 
 ### Prerequisites
 
-A (local or not) WordPress website as json server (needs json plugin https://wordpress.org/plugins/json-api/ ).
+A (local or not) WordPress website as json server (needs json plugin https://wordpress.org/plugins/json-rest-api/ version 1.2.0).
 This plugin is able to deliver json file that will be incorporated in latest posts page of webapp.
+To collect custom fields use plugin named xili-json-api-addon (in this same repository)
 
 URI must be adapted to your config in function  $$.getJSON of my-app.js - now via Settings popup form
 
-The webApp uses Framework7 v. 1.0.4 (March 22th, 2015)
+The webApp uses Framework7 v. 1.0.4 (March 21th, 2015)
 
 Tested also with an iPad Air retina (via browser or as webapp installed in iPad homepage)
 
@@ -32,9 +33,6 @@ Tested also with an iPad Air retina (via browser or as webapp installed in iPad 
 
 ### Pending issues
 
-- X refreshing excepted:'? with post.html ever in cache if home iOS webApp'
-- X caching (partially)
-- abstraction layer between json and f7 datas
 - full off line
 - doc
 
