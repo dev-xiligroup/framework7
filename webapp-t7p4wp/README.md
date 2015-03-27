@@ -14,7 +14,7 @@ This plugin is able to deliver json file that will be incorporated in latest pos
 
 URI must be adapted to your config in function  $$.getJSON of my-app.js - now via Settings popup form
 
-The webApp uses Framework7 v. 1.0.4 (March 22th, 2015)
+The webApp uses Framework7 v. 1.0.4 (updated March 22th, 2015)
 
 Tested also with an iPad Air retina (via browser or as webapp installed in iPad homepage)
 
@@ -34,7 +34,7 @@ Tested also with an iPad Air retina (via browser or as webapp installed in iPad 
 
 - X refreshing excepted:'? with post.html ever in cache if home iOS webApp'
 - X caching (partially)
-- abstraction layer between json and f7 datas
+- abstraction layer between json and f7 datas (to merge the both examples)
 - full off line
 - doc
 
