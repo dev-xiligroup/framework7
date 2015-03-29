@@ -1,0 +1,29 @@
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding">{{title}} v. {{url_query.version}} + F7 1.0.4</div>
+    <div class="right"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
+  </div>
+</div>
+<div class="pages">
+  <div data-page="post" class="page">
+    <div class="page-content">
+      <div class="content-block">
+        <div class="content-block-inner">
+          <h2>{{title}}</h2>
+          <p>{{#if thumbnail_images}}<img class="lazy" width="{{thumbnail_images['medium']['width']}}" height="{{thumbnail_images['medium']['height']}}" data-src="{{thumbnail_images['medium']['url']}}"/>{{/if}}</p>
+          <p>{{content}}</p>
+          <ul>
+            <li><b>Date: </b>{{modified}}</li>
+            <li><b>Author: </b>{{author['name']}}</li>
+            <li>{{#if_filled_object terms.category}}<b>Categories: </b>{{joinindex terms.category delimeter=" | " indexname="name"}}{{else}}<em>Uncategorized yet...</em>{{/if_filled_object}}</li>
+            <li>{{#if_filled_object terms.post_tag}}<b>Tags: </b>{{joinindex terms.post_tag delimeter=" | " indexname="name"}}{{else}}<em>No tag yet...</em>{{/if_filled_object}}</li>
+            <li>{{#if_filled_object terms.language}}<b>Language: </b>{{joinindex terms.language delimeter=" | " indexname="description"}}{{else}}<em>Undefined...</em>{{/if_filled_object}}</li>
+            {{linkstopostinotherlang custom_fields link_title="This post in"}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
