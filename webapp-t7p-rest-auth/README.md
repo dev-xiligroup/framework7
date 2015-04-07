@@ -25,7 +25,7 @@ Tested also with an iPad Air retina (via browser or as webapp installed in iPad 
 - modify the URI of the WP website to keep json (verify that the apache server is ready to deliver json for IP client - .htaccess)
 
 Example of .htaccess (modify paths)
-<code>
+```
 Header set Access-Control-Allow-Origin "http://michel-i5-apache.local"
 Header set Access-Control-Allow-Credentials true
 Header set Access-Control-Allow-Headers: Authorization
@@ -45,7 +45,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /wp_svn41/index.php [L]
 </IfModule>
 # END WordPress
-</code>
+```
 WP server must use plugin named JSON Basic Authentication
 
 ### Done
