@@ -13,7 +13,7 @@ A (local or not) WordPress website as json server (needs json plugin https://wor
 This plugin is able to deliver json file that will be incorporated in latest posts page of webapp.
 To collect custom fields use plugin named xili-json-api-addon (in this same repository)
 
-URI must be adapted to your config in now via Settings popup form, Authentication Password is in my-app.js  (today: only works with Safari - issue with headers on chrome)
+URI must be adapted to your config in now via Settings popup form, Authentication Password is in my-app.js  (today: works with Safari, Chrome, IOS Safari and IOS homescreen webapp "apple-mobile-web-app-capable" )
 
 The webApp uses Framework7 v. 1.0.5 (March 28th, 2015)
 
@@ -33,19 +33,19 @@ Header set Access-Control-Request-Method "GET, OPTIONS, POST"
 # Only if not OPTIONS
 <LimitExcept OPTIONS>
     AuthType Basic
-AuthName "Prototype F7 WP"
-AuthUserFile "/Applications/MAMP/htdocs/wp_svn41/.htpasswd"
+	AuthName "Prototype F7 WP"
+	AuthUserFile "/Applications/MAMP/htdocs/wp_svn41/.htpasswd"
 require valid-user
 </LimitExcept>
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /wp_svn41/
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /wp_svn41/index.php [L]
+	RewriteEngine On
+	RewriteBase /wp_svn41/
+	RewriteRule ^index\.php$ - [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule . /wp_svn41/index.php [L]
 </IfModule>
 
 # END WordPress
@@ -58,6 +58,7 @@ WP server must use plugin named JSON Basic Authentication (same login/passwd in 
 - caching of Json Datas
 - insertion of thumbnail_images if available
 - better var
+- Basic Authentication step !
 
 ### Pending issues
 
