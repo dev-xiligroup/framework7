@@ -50,41 +50,25 @@ if (json_type == 'rest') {
 function make_base_auth(user, password) {
   var tok = user + ':' + password;
   var hash = btoa(tok);
+  //var hash = Base64.encode(tok);
   return "Basic " + hash;
 }
 
 function get_latest_posts() {
-  //$$.getJSON('http://michel-i6-imac.local:8888/wp_svn42/json/get_posts/' , function (json, status, xhr) {
-  // to manage errors (? better)
-  // beforeSend: function (xhr){
-      //  xhr.setRequestHeader('Authorization', make_base_auth('adminxili', 'a'));
-//},
-//headers: {
-    //"Authorization": make_base_auth('adminxili', 'a')
-  //},
-  if ( authentication == 'Basic' ) { // only work with safari
-    $$.ajaxSetup({
-      xhrFields: {
-        withCredentials: true
-      },
-      headers: {
-        'Authorization': make_base_auth('remotef7json', 'f72(json')
-      }
-    });
-  }
+
   $$.ajax ({
+    xhrFields: {
+        withCredentials: true,
+      },
 
     url: uri,
     dataType: 'json',
-    timeout:6500,
-/*
-    xhrFields: {
-        withCredentials: true
-      },
-    beforeSend: function (xhr) {
-           xhr.setRequestHeader("Authorization", make_base_auth('remotef7json', 'f72(json'));
-          },
-*/
+    timeout:10000,
+    crossDomain:true,
+    headers: {
+        'Authorization': make_base_auth('remotef7json', 'f72(json')
+    },
+
     success: function(json, status, xhr) {
 
       console.log('inside success ' + status);

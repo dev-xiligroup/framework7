@@ -26,14 +26,17 @@ Tested also with an iPad Air retina (via browser or as webapp installed in iPad 
 
 Example of .htaccess (modify paths)
 ```
-Header set Access-Control-Allow-Origin "http://michel-i5-apache.local"
-Header set Access-Control-Allow-Credentials true
-Header set Access-Control-Allow-Headers: Authorization
-
-AuthType Basic
-AuthName "Prototype wd"
+Header set Access-Control-Allow-Origin "http://michel-i5-imac.local"
+Header set Access-Control-Allow-Credentials "true"
+Header set Access-Control-Allow-Headers "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"
+Header set Access-Control-Request-Method "GET, OPTIONS, POST"
+# Only if not OPTIONS
+<LimitExcept OPTIONS>
+    AuthType Basic
+AuthName "Prototype F7 WP"
 AuthUserFile "/Applications/MAMP/htdocs/wp_svn41/.htpasswd"
 require valid-user
+</LimitExcept>
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
@@ -44,9 +47,10 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /wp_svn41/index.php [L]
 </IfModule>
+
 # END WordPress
 ```
-WP server must use plugin named JSON Basic Authentication
+WP server must use plugin named JSON Basic Authentication (same login/passwd in htpasswd and in WP user)
 
 ### Done
 
@@ -67,4 +71,4 @@ WP server must use plugin named JSON Basic Authentication
 
 - french speaking references tips and tricks website
 
-michelwppi dev.xiligroup 2015-03-29
+michelwppi dev.xiligroup 2015-04-10
