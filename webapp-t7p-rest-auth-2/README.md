@@ -7,9 +7,11 @@ This example is the result of tests to learn famous Framework7 with WordPress.
 This is based on examples available in http://www.idangero.us/framework7/examples/
 This example is published to open discussion and improvements...
 
+Now, query and login/passwd are set via a popup form (a way to test F7 functions formFromJSON and formToJSON)
+
 ### Prerequisites
 
-A (local or not) WordPress website as json server (needs json plugin https://wordpress.org/plugins/json-rest-api/ version 1.2.0).
+A (local or not) WordPress website as json server (needs json plugin https://wordpress.org/plugins/json-rest-api/ version 1.2.1).
 This plugin is able to deliver json file that will be incorporated in latest posts page of webapp.
 To collect custom fields use plugin named xili-json-api-addon (in this same repository)
 
