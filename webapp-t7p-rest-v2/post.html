@@ -1,0 +1,31 @@
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding">{{title['rendered']}} v. {{url_query.version}} + F7 1.0.7</div>
+    <div class="right"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div>
+  </div>
+</div>
+<div class="pages">
+  <div data-page="post" class="page">
+    <div class="page-content">
+      <div class="content-block">
+        <div class="content-block-inner">
+          <h2>{{title['rendered']}}</h2>
+          <p>{{#if thumbnail_images}}<img class="lazy" width="{{thumbnail_images['medium']['width']}}" height="{{thumbnail_images['medium']['height']}}" data-src="{{thumbnail_images['medium']['url']}}"/>{{/if}}</p>
+          <p>{{content['rendered']}}</p>
+          <ul>
+            <li><b>Date: </b>{{modified}}</li>
+
+            <li><b>Author: </b>{{author}}</li>
+            <li><b>Taxonomies: </b>{{termsarray this._links delimeter=", "}}</li>
+            <li><b>Languages: </b>{{taxonomylist this.selected_taxonomies delimeter=" | " taxonomy="language"}}</li>
+            <li><b>Categories: </b>{{taxonomylist this.selected_taxonomies delimeter=" | " taxonomy="category"}}</li>
+            <li><b>Post tags: </b>{{taxonomylist this.selected_taxonomies delimeter=", " taxonomy="post_tag"}}</li>
+            {{linkstopostinotherlang this.custom_fields link_title="This post in"}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
